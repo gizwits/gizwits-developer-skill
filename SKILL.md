@@ -16,6 +16,10 @@ description: 帮助开发者使用机智云开发者中心管理 App、产品和
 - Session、Token、App Secret 不写入 skill、项目仓库、对话或日志。CLI 默认将会话保存在用户私有目录，输出屏蔽敏感字段。
 - 通用固件仅支持 **ESP32-C3、ESP32-C5**。ESP32-P4 是独立摄像头方案，不能作为通用固件模板。ESP-IDF 使用 **6.1**，并匹配模板 SDK 锁文件中的具体提交及编译器版本。
 
+## 每日更新检查
+
+每次会话首次使用本 skill 时，执行 `python3 "$SKILL_DIR/scripts/self_update.py" check`（`SKILL_DIR` 为当前 skill 安装目录）。脚本每 24 小时至多检查一次官方 GitHub `main`；未到期或无更新时继续原任务，失败也不阻塞。发现更新时读取 [自更新流程](references/self-update.md)，展示目标版本和变更，**询问用户并在明确同意后才升级**；暂不升级则保留当前版本。主动要求检查用 `check --force`。不安装后台定时任务，非独立 Git 安装不强行覆盖。
+
 ## 登录和组织
 
 首次使用先读 [登录与会话](references/auth.md)。命令中的 `SKILL_DIR` 是本 skill 的安装目录。

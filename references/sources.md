@@ -42,3 +42,9 @@ Excel 样例来自用户提供的 `d033e9e7a6a04728b93d2d95643c2944.xlsx`，随 
 源码路径前缀 `app/src/main/java/com/gizwits/smart/app/`：读取 `core/setup/` 的配置存储、产品过滤、登录同步；`feature/setup/SetupViewModel.kt` 的初始化、引导与身份切换；`ui/SmartApp.kt` 的路由；`feature/main/`、`feature/setting/`、`feature/user/` 的入口；`feature/control/ControlScreen.kt` 及 `feature/control/data/` 的通道、通用数据点 UI、类型转换、写后读回；`MainActivity.kt` 的离线协议复制机制。对应测试作为后续改造时保留与扩充的依据。
 
 本次仅将经过源码核对的 Android 开发流程和产品控制页要求写入 skill；未指定实际 App/产品，未替换真实凭据、修改 demo、构建 APK 或完成设备配网与控制验证。后续应用开发必须独立报告这些验证结果。
+
+## 自更新验证
+
+自更新周期按用户要求为 24 小时，以使用 skill 触发，来源固定为本仓库 GitHub main。48 项本地测试通过，其中 14 项使用临时真实 Git 仓库验证检查间隔、确认目标提交、远端继续更新后仍应用原目标、暂缓、修改与分叉保护、忽略文件冲突（含重命名）、网络失败退避及非独立 Git 安装拒绝。检查动作不更新工作文件。
+
+通过直接 Git 查询核对了 GitHub main；当前执行环境限制 Python 子进程连接本地网络代理，脚本的在线检查实际返回 unavailable，没有把它记作“没有更新”。完整线上原地升级未在此次编写中执行；升级流程在隔离的 Git 仓库内验证。此功能不代表 ZIP/插件安装已支持原地替换。
