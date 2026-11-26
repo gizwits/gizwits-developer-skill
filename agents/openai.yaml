@@ -1,0 +1,4 @@
+interface:
+  display_name: "机智云开发者助手"
+  short_description: "管理机智云产品与数据点，开发 C3/C5 固件和场景化 Android 应用"
+  default_prompt: "使用 $gizwits-developer-skill 帮我配置机智云应用和产品，按需求开发固件或带产品专属控制页的 Android 应用。"
